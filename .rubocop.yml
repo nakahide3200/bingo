@@ -1,0 +1,24 @@
+Rails:
+  Enabled: true
+
+AllCops:
+  TargetRubyVersion: 2.5
+
+  Exclude:
+    - bin/*
+    - config/**/*
+    - db/**/*
+    - vendor/bundle/**/*
+    - Gemfile
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
+
+Metrics/LineLength:
+  Max: 128
+
+Style/Documentation:
+  Enabled: false
+
+Style/ClassAndModuleChildren:
+  Enabled: false
