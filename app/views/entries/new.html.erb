@@ -1,0 +1,11 @@
+<h1><%= @game.name =%></h1>
+
+<div><%= @game.name =%>に参加しますか？</div>
+
+<%= form_for(@game.entries.build, url: game_entries_path(@game)) do |form| %>
+  <div class="actions">
+    <%= form.submit '参加する' %>
+  </div>
+<% end %>
+
+<%= link_to 'キャンセル', games_path %>
