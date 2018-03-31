@@ -33,8 +33,8 @@ class EntriesController < ApplicationController
 
   private
 
-    # 管理者はゲームに参加できない
-    def confirm_not_admin
-      return redirect_to root_url, notice: '管理者はゲームに参加できません。' if current_user.admin?
-    end
+  # 管理者はゲームに参加できない
+  def confirm_not_admin
+    return redirect_to root_url, notice: '管理者はゲームに参加できません。' if current_user.admin?
+  end
 end
