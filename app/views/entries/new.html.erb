@@ -3,6 +3,18 @@
 <div><%= @game.name =%>に参加しますか？</div>
 
 <%= form_for(@game.entries.build, url: game_entries_path(@game)) do |form| %>
+  <% if @entry && @entry.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@entry.errors.count, "error") %> prohibited this entry from being saved:</h2>
+
+      <ul>
+      <% @entry.errors.full_messages.each do |message| %>
+        <li><%= message %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
   <div class="actions">
     <%= form.submit '参加する' %>
   </div>

@@ -6,14 +6,14 @@ class EntriesController < ApplicationController
   end
 
   def create
-    entry = current_user.entries.build do |e|
+    @entry = current_user.entries.build do |e|
       e.game_id = params[:game_id]
     end
     if entry.save
       flash[:notice] = 'ゲームに参加しました。'
       redirect_to game_url(params[:game_id])
     else
-      render json: { messages: entry.errors.full_messages }, status: 422
+      render :new
     end
   end
 
