@@ -1,5 +1,6 @@
 class EntriesController < ApplicationController
   before_action :authenticate_user!
+  before_action :confirm_not_admin
 
   def new
     # 既に参加済み
@@ -29,4 +30,11 @@ class EntriesController < ApplicationController
     entry.destroy!
     redirect_to games_url, notice: 'ゲームの参加をキャンセルしました。'
   end
+
+  private
+
+    # 管理者はゲームに参加できない
+    def confirm_not_admin
+      return redirect_to root_url, notice: '管理者はゲームに参加できません。' if current_user.admin?
+    end
 end
