@@ -22,3 +22,6 @@ Style/Documentation:
 
 Style/ClassAndModuleChildren:
   Enabled: false
+
+Style/BlockComments:
+  Enabled: false
