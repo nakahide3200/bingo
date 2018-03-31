@@ -1,4 +1,7 @@
 class Admin::GamesController < ApplicationController
+  before_action :authenticate_user!
+  before_action :admin_user
+
   before_action :set_game, only: %i[show edit update destroy]
 
   def index
