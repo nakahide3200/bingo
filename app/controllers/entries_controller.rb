@@ -19,7 +19,7 @@ class EntriesController < ApplicationController
 
   def destroy
     entry = current_user.entries.find_by!(game_id: params[:game_id])
-    ticket.destroy!
-    redirect_to game_path(params[:game_id]), notice: 'ゲームの参加をキャンセルしました。'
+    entry.destroy!
+    redirect_to games_path, notice: 'ゲームの参加をキャンセルしました。'
   end
 end
