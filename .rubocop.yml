@@ -11,11 +11,14 @@ AllCops:
     - vendor/bundle/**/*
     - Gemfile
 
-Style/FrozenStringLiteralComment:
-  Enabled: false
-
 Metrics/LineLength:
   Max: 128
+
+Metrics/AbcSize:
+  Max: 30
+
+Style/FrozenStringLiteralComment:
+  Enabled: false
 
 Style/Documentation:
   Enabled: false
@@ -24,4 +27,7 @@ Style/ClassAndModuleChildren:
   Enabled: false
 
 Style/BlockComments:
+  Enabled: false
+
+Style/AsciiComments:
   Enabled: false

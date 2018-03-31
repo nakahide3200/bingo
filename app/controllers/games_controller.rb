@@ -7,6 +7,7 @@ class GamesController < ApplicationController
     @games = Game.all
   end
 
+  # play画面
   def show
     @game = Game.find(params[:id])
   end
