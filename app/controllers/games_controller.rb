@@ -10,5 +10,9 @@ class GamesController < ApplicationController
   # play画面
   def show
     @game = Game.find(params[:id])
+
+    card = current_user.entries.find_by(game_id: params[:id])&.card
+
+    @numbers = card.numbers
   end
 end

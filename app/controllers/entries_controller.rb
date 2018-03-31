@@ -14,15 +14,17 @@ class EntriesController < ApplicationController
     # 既に参加済み
     return redirect_to game_url(params[:game_id]) if current_user.entries.find_by(game_id: params[:game_id])
 
-    entry = current_user.entries.build do |e|
-      e.game_id = params[:game_id]
+    Entry.transaction do
+      entry = current_user.entries.build(game_id: params[:game_id])
+      entry.save
+
+      card = entry.build_card(serialized_numbers: Card.generate_and_serialize_numbers)
+      card.save
     end
-    if entry.save
-      flash[:notice] = 'ゲームに参加しました。'
-      redirect_to game_url(params[:game_id])
-    else
-      render :new
-    end
+    flash[:notice] = 'ゲームに参加しました。'
+    redirect_to game_url(params[:game_id])
+  rescue StandardError
+    redirect_to games_url, notice: 'ゲームに参加できませんでした。'
   end
 
   def destroy
