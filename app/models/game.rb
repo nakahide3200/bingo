@@ -9,8 +9,6 @@ class Game < ApplicationRecord
   private
 
   def start_time_should_be_after_now
-    if start_time < DateTime.now
-      errors.add(:start_time, 'は現在時刻以降を指定してください。')
-    end
+    errors.add(:start_time, 'は現在時刻以降を指定してください。') if start_time < Time.zone.now
   end
 end

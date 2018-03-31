@@ -5,15 +5,13 @@ class Admin::GamesController < ApplicationController
     @games = Game.all
   end
 
-  def show
-  end
+  def show; end
 
   def new
     @game = Game.new
   end
 
-  def edit
-  end
+  def edit; end
 
   def create
     @game = Game.new(game_params)
