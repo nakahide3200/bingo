@@ -16,10 +16,10 @@ class EntriesController < ApplicationController
 
     Entry.transaction do
       entry = current_user.entries.build(game_id: params[:game_id])
-      entry.save
+      entry.save!
 
       card = entry.build_card(serialized_numbers: Card.generate_and_serialize_numbers)
-      card.save
+      card.save!
     end
     flash[:notice] = 'ゲームに参加しました。'
     redirect_to game_url(params[:game_id])
