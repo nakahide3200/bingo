@@ -11,8 +11,6 @@ class Card < ApplicationRecord
     serialize_numbers(generate_numbers)
   end
 
-  private_class_method :generate_numbers
-
   # 数値の5x5の２次元配列
   # 1列目は1から15の中から5個
   # 2列目は16から30
@@ -27,6 +25,7 @@ class Card < ApplicationRecord
       .tap { |table| table[2][2] = 0 }
       .transpose
   end
+  private_class_method :generate_numbers
 
   def self.serialize_numbers(numbers)
     JSON.fast_generate(numbers)
