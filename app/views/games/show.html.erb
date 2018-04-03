@@ -19,7 +19,7 @@
   <strong>Start time:</strong>
 </p>
 
-<table>
+<table class="card-table">
   <thead>
     <tr>
       <th>B</th>
@@ -34,7 +34,7 @@
     <% @numbers.each do |row| %>
       <tr>
         <% row.each do |number| %>
-          <td><%= number %></td>
+          <td data-number="<%= number %>"><%= number %></td>
         <% end %>
       </tr>
     <% end %>
@@ -46,5 +46,20 @@
   <%= @game.numbers.join(', ') %>
 </p>
 
-
 <%= link_to 'ゲーム一覧へ', games_path %>
+
+<input id="lot_numbers_json" type="hidden" value=<%= @lot_numbers_json %> />
+<script type="text/javascript">
+  $(function(){
+    // ヒットしている番号の印表示。
+    var lot_numbers_json = $('#lot_numbers_json').val();
+    var lot_numbers = JSON.parse(lot_numbers_json);
+
+    $('.card-table tr td').each(function(index, elm){
+      var number = $(elm).data('number');
+      if (lot_numbers.indexOf(number) >= 0 || number == 0) {
+        $(elm).addClass('hit');
+      }
+    })
+  });
+</script>

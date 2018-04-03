@@ -82,3 +82,13 @@ div {
 label {
   display: block;
 }
+
+.card-table {
+  tr {
+    td {
+      &.hit {
+        color: red;
+      }
+    }
+  }
+} 
