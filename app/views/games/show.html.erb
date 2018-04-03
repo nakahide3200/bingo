@@ -10,6 +10,15 @@
   <%= @game.start_time %>
 </p>
 
+
+<% if @bingo %>
+  <strong>BINGO!</strong>
+<% end %>
+
+<p>
+  <strong>Start time:</strong>
+</p>
+
 <table>
   <thead>
     <tr>
@@ -31,6 +40,11 @@
     <% end %>
   </tbody>
 </table>
+
+<p>
+  <strong>抽選履歴</strong>
+  <%= @game.numbers.join(', ') %>
+</p>
 
 
 <%= link_to 'ゲーム一覧へ', games_path %>

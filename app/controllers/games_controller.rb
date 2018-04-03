@@ -14,5 +14,7 @@ class GamesController < ApplicationController
     card = current_user.entries.find_by(game_id: params[:id])&.card
 
     @numbers = card.numbers
+
+    @bingo = card.bingo?(@game.numbers)
   end
 end
