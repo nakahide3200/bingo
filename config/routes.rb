@@ -8,6 +8,10 @@ Rails.application.routes.draw do
   end
 
   namespace :admin do
-    resources :games
+    resources :games do
+      member do
+        post :create_number, path: :numbers
+      end 
+    end
   end
 end

@@ -6,6 +6,13 @@ class Game < ApplicationRecord
 
   validate :start_time_should_be_after_now
 
+  serialize :numbers, JSON
+
+  # まだ出ていない番号を引く
+  def lot_number
+    ((1..75).to_a - numbers).sample
+  end
+
   private
 
   def start_time_should_be_after_now

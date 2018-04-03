@@ -2,13 +2,23 @@ class Admin::GamesController < ApplicationController
   before_action :authenticate_user!
   before_action :admin_user
 
-  before_action :set_game, only: %i[show edit update destroy]
+  before_action :set_game, only: %i[show create_number edit update destroy]
 
   def index
     @games = Game.all
   end
 
+  # 抽選画面
   def show; end
+
+  # 抽選
+  def create_number
+    new_number = @game.lot_number
+    @game.numbers << new_number
+    @game.save!
+
+    redirect_to [:admin, @game]
+  end
 
   def new
     @game = Game.new
@@ -18,6 +28,7 @@ class Admin::GamesController < ApplicationController
 
   def create
     @game = Game.new(game_params)
+    @game.numbers = []
 
     if @game.save
       redirect_to [:admin, @game], notice: 'Game was successfully created.'

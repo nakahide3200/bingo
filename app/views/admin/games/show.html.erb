@@ -10,5 +10,14 @@
   <%= @game.start_time %>
 </p>
 
+<%= form_tag(create_number_admin_game_path(@game), method: 'post') do %>
+  <%= submit_tag '抽選する' %>
+<% end %>
+
+<p>
+  <strong>抽選履歴</strong>
+  <%= @game.numbers.join(', ') %>
+</p>
+
 <%= link_to 'Edit', edit_admin_game_path(@game) %> |
 <%= link_to 'Back', admin_games_path %>

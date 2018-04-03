@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180331215632) do
+ActiveRecord::Schema.define(version: 20180403174011) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "entry_id", null: false
@@ -31,6 +31,7 @@ ActiveRecord::Schema.define(version: 20180331215632) do
     t.datetime "start_time", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.text "numbers", default: "", null: false
   end
 
   create_table "users", force: :cascade do |t|
