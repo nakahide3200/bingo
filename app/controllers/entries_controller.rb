@@ -18,7 +18,7 @@ class EntriesController < ApplicationController
       entry = current_user.entries.build(game_id: params[:game_id])
       entry.save!
 
-      card = entry.build_card(serialized_numbers: Card.generate_and_serialize_numbers)
+      card = entry.build_card(numbers: Card.generate_numbers)
       card.save!
     end
     flash[:notice] = 'ゲームに参加しました。'

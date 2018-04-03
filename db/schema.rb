@@ -14,7 +14,7 @@ ActiveRecord::Schema.define(version: 20180331215632) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "entry_id", null: false
-    t.text "serialized_numbers", null: false
+    t.text "numbers", null: false
     t.index ["entry_id"], name: "index_cards_on_entry_id"
   end
 
