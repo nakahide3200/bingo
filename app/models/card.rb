@@ -21,8 +21,14 @@ class Card < ApplicationRecord
       .transpose
   end
 
-  # TODO 高速化
+  # TODO: 高速化
   def bingo?(lot_numbers)
+    bingo_row?(lot_numbers) || bingo_column?(lot_numbers) || bingo_left_top?(lot_numbers) || bingo_right_top?(lot_numbers)
+  end
+
+  private
+
+  def bingo_row?(lot_numbers)
     # 各行のチェック
     (0..4).each do |row|
       success = true
@@ -35,7 +41,11 @@ class Card < ApplicationRecord
       return true if success
     end
 
-    # 各列のチェック
+    false
+  end
+
+  def bingo_column?(lot_numbers)
+    # 各行のチェック
     (0..4).each do |col|
       success = true
       (0..4).each do |row|
@@ -47,7 +57,10 @@ class Card < ApplicationRecord
       return true if success
     end
 
-    # 左上斜め
+    false
+  end
+
+  def bingo_left_top?(lot_numbers)
     success = true
     (0..4).each do |n|
       unless hit_number?(n, n, lot_numbers)
@@ -55,9 +68,10 @@ class Card < ApplicationRecord
         break
       end
     end
-    return true if success
+    success
+  end
 
-    # 右上斜め
+  def bingo_right_top?(lot_numbers)
     success = true
     (0..4).each do |n|
       unless hit_number?(n, 4 - n, lot_numbers)
@@ -65,12 +79,8 @@ class Card < ApplicationRecord
         break
       end
     end
-    return true if success
-
-    false
+    success
   end
-
-  private 
 
   def hit_number?(row, col, lot_numbers)
     lot_numbers.include?(numbers[row][col]) || numbers[row][col] == FREE_SPOT_NUMBER
