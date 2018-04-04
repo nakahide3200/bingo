@@ -51,6 +51,12 @@
 <input id="lot_numbers_json" type="hidden" value=<%= @lot_numbers_json %> />
 <script type="text/javascript">
   $(function(){
+    App.notifications = App.cable.subscriptions.create('NotificationsChannel', {
+      received: function(data) {
+        location.reload();
+      },
+    });
+
     // ヒットしている番号の印表示。
     var lot_numbers_json = $('#lot_numbers_json').val();
     var lot_numbers = JSON.parse(lot_numbers_json);
