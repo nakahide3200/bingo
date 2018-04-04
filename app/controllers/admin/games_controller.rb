@@ -14,6 +14,9 @@ class Admin::GamesController < ApplicationController
   # 抽選
   def create_number
     new_number = @game.lot_number
+
+    return redirect_to [:admin, @game], notice: '全ての数が出ました。' unless new_number
+
     @game.numbers << new_number
     @game.save!
 
