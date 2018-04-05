@@ -9,14 +9,16 @@
   </head>
 
   <body>
-    <div>
-      <% if user_signed_in? %>
-        <div><%= current_user.email %></div>
-        <%= link_to "ログアウト", destroy_user_session_path %>
-      <% else %>
-        <%= link_to "ログイン", new_user_session_path %>
-      <% end %>
+    <div class="container">
+      <div>
+        <% if user_signed_in? %>
+          <div><%= current_user.email %></div>
+          <%= link_to "ログアウト", destroy_user_session_path %>
+        <% else %>
+          <%= link_to "ログイン", new_user_session_path %>
+        <% end %>
+      </div>
+      <%= yield %>
     </div>
-    <%= yield %>
   </body>
 </html>
