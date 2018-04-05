@@ -15,8 +15,7 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.name %></td>
-        <td width="250px"><%= game.start_time %></td>
-
+        <td width="250px"><%= l(game.start_time, format: :middle) %></td>
         <td width="150px"><%= link_to '参加する', new_game_entry_path(game), {:class => 'btn btn-primary'} %></td>
       </tr>
     <% end %>

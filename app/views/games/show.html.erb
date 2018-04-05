@@ -2,11 +2,9 @@
 
 <h1 class="game-title"><%= @game.name %></h1>
 
-<p>
-  <strong>開始時刻:</strong>
-  <%= @game.start_time %>
-</p>
-
+<div class="game-start-time">
+  開始時刻: <%= l(@game.start_time, format: :middle) %>
+</div>
 
 <% if @bingo %>
   <div class="bingo-img">
