@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>名前:</strong>
-  <%= @game.name %>
-</p>
+<h1 class="game-title"><%= @game.name %></h1>
 
 <p>
   <strong>開始時刻:</strong>
@@ -11,15 +8,15 @@
 </p>
 
 <%= form_tag(create_number_admin_game_path(@game), method: 'post') do %>
-  <%= submit_tag '抽選する' %>
+  <%= submit_tag '抽選する', class: 'btn btn-lg btn-primary btn-block btn-lot' %>
 <% end %>
 
 <p>
-  <div>抽選履歴</div>
+  <div>抽選番号</div>
   <div><%= @game.numbers.join(', ') %></div>
 </p>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>ターン</th>

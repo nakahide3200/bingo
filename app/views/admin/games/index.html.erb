@@ -2,7 +2,7 @@
 
 <h1>ゲーム一覧</h1>
 
-<table>
+<table class="table table-bordered">
   <thead>
     <tr>
       <th>名前</th>
@@ -15,10 +15,10 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.name %></td>
-        <td><%= game.start_time %></td>
-        <td><%= link_to '表示', [:admin, game] %></td>
-        <td><%= link_to '編集', edit_admin_game_path(game) %></td>
-        <td><%= link_to '削除', [:admin, game], method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td width="200px"><%= game.start_time %></td>
+        <td width="80px"><%= link_to '表示', [:admin, game], class: 'btn btn-primary' %></td>
+        <td width="80px"><%= link_to '編集', edit_admin_game_path(game), class: 'btn btn-defalut' %></td>
+        <td width="80px"><%= link_to '削除', [:admin, game], class: 'btn btn-danger', method: :delete, data: { confirm: 'Are you sure?' } %></td>
       </tr>
     <% end %>
   </tbody>

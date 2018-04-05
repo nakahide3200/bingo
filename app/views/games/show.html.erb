@@ -1,9 +1,6 @@
 <p id="notice"><%= notice %></p>
 
-<p>
-  <strong>名前:</strong>
-  <%= @game.name %>
-</p>
+<h1 class="game-title"><%= @game.name %></h1>
 
 <p>
   <strong>開始時刻:</strong>
@@ -12,12 +9,16 @@
 
 
 <% if @bingo %>
-  <strong>BINGO!</strong>
+  <div class="bingo-img">
+    <%= image_tag 'bingo.png' %>
+  </div>
+<% else %>
+  <div class="last-number">
+    <%= @game.numbers.last %>
+  </div>
 <% end %>
 
-<%= @game.numbers.last %>
-
-<table class="card-table">
+<table class="card-table table-bordered center-block">
   <thead>
     <tr>
       <th>B</th>
@@ -40,8 +41,8 @@
 </table>
 
 <p>
-  <strong>抽選履歴</strong>
-  <%= @game.numbers.join(', ') %>
+  <div>抽選番号</div>
+  <div><%= @game.numbers.join(', ') %></div>
 </p>
 
 <%= link_to 'ゲーム一覧へ', games_path %>

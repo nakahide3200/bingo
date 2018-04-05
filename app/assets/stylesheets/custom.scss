@@ -14,10 +14,41 @@ html,body{
 
     overflow: hidden;
   }
+
+  h1 {
+    text-align: center;
+  }
+}
+
+.logout-link {
+  float: right;
+}
+
+.last-number {
+  text-align: center;
+  font-size: 30px;
+  border: ridge 8px #0066FF;
+  width: 100px;
+  margin: auto;
+}
+
+.bingo-img {
+  width: 300px;
+  margin: auto;
 }
 
 .card-table {
+  margin-top: 20px;
+  text-align: center;
+  width: 300px;
+  font-size: 24px;
+  font-weight: bold;
+  th {
+    width: 60px;
+    padding-left: 20px
+  }
   tr {
+    height: 60px;
     td {
       &.hit {
         color: red;

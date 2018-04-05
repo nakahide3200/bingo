@@ -11,17 +11,25 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= form.label :name %>
-    <%= form.text_field :name, id: :game_name %>
+  <div class="field form-group row">
+    <div class="col-sm-3">
+      <%= form.label :name, class: 'control-label' %>
+    </div>
+    <div class="col-sm-5">
+      <%= form.text_field :name, id: :game_name, class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="field">
-    <%= form.label :start_time %>
-    <%= form.datetime_select :start_time, id: :game_start_time %>
+   <div class="field form-group row">
+    <div class="col-sm-3">
+      <%= form.label :start_time, class: 'control-label' %>
+    </div>
+    <div class="col-sm-5">
+      <%= form.datetime_select :start_time, id: :game_start_time , class: 'form-control' %>
+    </div>
   </div>
 
-  <div class="actions">
-    <%= form.submit %>
+  <div class="actions center-block">
+    <%= form.submit '作成する/更新する', class: 'btn btn-primary btn-block' %>
   </div>
 <% end %>

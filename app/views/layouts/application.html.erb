@@ -12,8 +12,8 @@
     <div class="container">
       <div>
         <% if user_signed_in? %>
-          <div><%= current_user.email %></div>
-          <%= link_to "ログアウト", destroy_user_session_path %>
+          <div><%= current_user.email %> さん</div>
+          <%= link_to "ログアウト", destroy_user_session_path, class: "logout-link" %>
         <% else %>
           <%= link_to "ログイン", new_user_session_path %>
         <% end %>
