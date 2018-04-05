@@ -24,13 +24,19 @@
 
 <script type="text/javascript">
   $(function(){
-    App.notifications = App.cable.subscriptions.create("NotificationsChannel", {
-      connected: function() {
-        App.notifications.notify_lot();
+    App.notifications = App.cable.subscriptions.create(
+      {  
+        channel: "NotificationsChannel", 
+        game_id: <%= @game.id %>
       },
-      notify_lot: function() {
-        return this.perform('notify_lot');
+      {
+        connected: function() {
+          App.notifications.notify_lot();
+        },
+        notify_lot: function() {
+          return this.perform('notify_lot', {game_id: <%= @game.id %>});
+        }
       }
-    });
+    );
   });
 </script>
