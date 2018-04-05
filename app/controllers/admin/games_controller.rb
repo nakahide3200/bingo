@@ -9,7 +9,9 @@ class Admin::GamesController < ApplicationController
   end
 
   # 抽選画面
-  def show; end
+  def show
+    @bingo_users_for_each_turn = @game.bingo_users_for_each_turn
+  end
 
   # 抽選
   def create_number
@@ -17,8 +19,12 @@ class Admin::GamesController < ApplicationController
 
     return redirect_to [:admin, @game], notice: '全ての数が出ました。' unless new_number
 
-    @game.numbers << new_number
-    @game.save!
+    Game.transaction do
+      @game.numbers << new_number
+      @game.save!
+
+      @game.check_bingo_for_entries!
+    end
 
     redirect_to [:admin, @game]
   end

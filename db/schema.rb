@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20180403174011) do
+ActiveRecord::Schema.define(version: 20180405180401) do
 
   create_table "cards", force: :cascade do |t|
     t.integer "entry_id", null: false
@@ -21,6 +21,7 @@ ActiveRecord::Schema.define(version: 20180403174011) do
   create_table "entries", force: :cascade do |t|
     t.integer "user_id", null: false
     t.integer "game_id", null: false
+    t.integer "bingo_turn", default: 0, null: false
     t.index ["game_id", "user_id"], name: "index_entries_on_game_id_and_user_id", unique: true
     t.index ["game_id"], name: "index_entries_on_game_id"
     t.index ["user_id"], name: "index_entries_on_user_id"

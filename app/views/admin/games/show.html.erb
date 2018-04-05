@@ -15,12 +15,29 @@
 <% end %>
 
 <p>
-  <strong>抽選履歴</strong>
-  <%= @game.numbers.join(', ') %>
+  <div>抽選履歴</div>
+  <div><%= @game.numbers.join(', ') %></div>
 </p>
 
-<%= link_to '編集する', edit_admin_game_path(@game) %> |
-<%= link_to '戻る', admin_games_path %>
+<table>
+  <thead>
+    <tr>
+      <th>ターン</th>
+      <th>当選者</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @bingo_users_for_each_turn.keys.sort.each do |turn| %>
+      <tr>
+        <td><%= turn %></td>
+        <td><%= @bingo_users_for_each_turn[turn].map{|user| user.email}.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<%= link_to 'ゲーム一覧へ', admin_games_path %>
 
 <script type="text/javascript">
   $(function(){
