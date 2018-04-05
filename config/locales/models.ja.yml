@@ -5,4 +5,7 @@ ja:
         email: メールアドレス
         password: パスワード
         password_confirmation: 確認用パスワード
-        remember_me: 次回から自動的にログイン
+        remember_me: 次回から自動的にログインs
+      game:
+        name: 名前
+        start_time: 開始時刻
