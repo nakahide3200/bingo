@@ -5,4 +5,8 @@ class User < ApplicationRecord
          :recoverable, :rememberable, :trackable, :validatable
 
   has_many :entries, dependent: :nullify
+
+  def registered_for_game?(game_id)
+    entries.where(game_id: game_id).exists?
+  end
 end

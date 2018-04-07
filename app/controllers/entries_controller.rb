@@ -4,7 +4,7 @@ class EntriesController < ApplicationController
 
   def new
     # 既に参加済み
-    return redirect_to game_url(params[:game_id]) if current_user.entries.find_by(game_id: params[:game_id])
+    return redirect_to game_url(params[:game_id]) if current_user.registered_for_game?(params[:game_id])
 
     @game = Game.find(params[:game_id])
   end
@@ -12,7 +12,7 @@ class EntriesController < ApplicationController
   # ゲームに参加
   def create
     # 既に参加済み
-    return redirect_to game_url(params[:game_id]) if current_user.entries.find_by(game_id: params[:game_id])
+    return redirect_to game_url(params[:game_id]) if current_user.registered_for_game?(params[:game_id])
 
     Entry.transaction do
       entry = current_user.entries.build(game_id: params[:game_id])
