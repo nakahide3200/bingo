@@ -5,7 +5,7 @@ class Game < ApplicationRecord
   validates :name, length: { maximum: 50 }, presence: true
   validates :start_time, presence: true
 
-  validate :start_time_should_be_after_now
+  validate :start_time_should_be_after_now, on: :create
 
   serialize :numbers, JSON
 
