@@ -26,7 +26,7 @@ class Admin::GamesController < ApplicationController
       @game.check_bingo_for_entries!
     end
 
-    redirect_to [:admin, @game]
+    @bingo_users_for_each_turn = @game.bingo_users_for_each_turn
   end
 
   def new

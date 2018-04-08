@@ -10,7 +10,7 @@ class Game < ApplicationRecord
   serialize :numbers, JSON
 
   def self.default_name
-    "XXX ビンゴ大会"
+    'XXX ビンゴ大会'
   end
 
   # まだ出ていない番号を引く

@@ -6,32 +6,18 @@
   <%= l(@game.start_time, format: :middle) %> 開始
 </div>
 <br>
-<%= form_tag(create_number_admin_game_path(@game), method: 'post') do %>
+<%= form_tag(create_number_admin_game_path(@game), method: 'post', remote: true) do %>
   <%= submit_tag '抽選する', class: 'btn btn-lg btn-primary center-block', style: 'width: 200px;' %>
 <% end %>
 <br>
 <p>
   <div class="text-center">抽選番号</div>
-  <div><%= @game.numbers.join(', ') %></div>
+  <div class="lot-numbers"><%= @game.numbers.join(', ') %></div>
 </p>
 
-<table class="table table-bordered">
-  <thead>
-    <tr>
-      <th width="100px">ターン</th>
-      <th>当選者</th>
-    </tr>
-  </thead>
-
-  <tbody>
-    <% @bingo_users_for_each_turn.keys.sort.each do |turn| %>
-      <tr>
-        <td><%= turn %></td>
-        <td><%= @bingo_users_for_each_turn[turn].map{|user| user.email}.join(', ') %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="bingo-users-table-contanier">
+  <%= render partial: 'bingo_users_table', locals: {bingo_users_for_each_turn: @bingo_users_for_each_turn} %>
+</div>
 
 <%= link_to 'ゲーム一覧へ', admin_games_path, class: 'btn btn-link center-block' %>
 
@@ -43,9 +29,6 @@
         game_id: <%= @game.id %>
       },
       {
-        connected: function() {
-          App.notifications.notify_lot();
-        },
         notify_lot: function() {
           return this.perform('notify_lot', {game_id: <%= @game.id %>});
         }

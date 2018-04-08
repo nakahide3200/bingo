@@ -14,7 +14,7 @@ class Card < ApplicationRecord
     (1..75)
       .each_slice(15)
       .map { |sequence| sequence.sample(5) }
-      .tap { |table| table[2][2] = self.free_spot_number }
+      .tap { |table| table[2][2] = free_spot_number }
       .transpose
   end
 

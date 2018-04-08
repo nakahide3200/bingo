@@ -1,0 +1,4 @@
+
+$('bingo-users-table-contanier').html("<%= j render partial: 'bingo_users_table', locals: {bingo_users_for_each_turn: @bingo_users_for_each_turn} %>")
+$('.lot-numbers').html("<%= @game.numbers.join(', ') %>");
+App.notifications.notify_lot();

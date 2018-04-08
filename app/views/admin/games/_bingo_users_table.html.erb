@@ -1,0 +1,17 @@
+<table class="table table-bordered">
+  <thead>
+    <tr>
+      <th width="100px">ターン</th>
+      <th>当選者</th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% bingo_users_for_each_turn.keys.sort.each do |turn| %>
+      <tr>
+        <td><%= turn %></td>
+        <td><%= bingo_users_for_each_turn[turn].map{|user| user.email}.join(', ') %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
