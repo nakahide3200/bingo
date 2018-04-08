@@ -1,24 +1,50 @@
-# README
+# BINGO!
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+ビンゴ大会を開きましょう！
+Ruby on Rails 5.1を使っています。
 
-Things you may want to cover:
+## 前提条件
 
-* Ruby version
+Ruby on Rails 5.1が動かせる環境で実行してください。
 
-* System dependencies
+## セットアップ方法
 
-* Configuration
+以下を実行してください。
 
-* Database creation
+```
+bundle install
+rake db:migrate
+```
 
-* Database initialization
+次にrake db:seedを使って初期管理者カウントを作成しますが、その前に必要に応じて以下のファイルを編集してメールアドレスとパスワードを変更してください。
 
-* How to run the test suite
+db/seeds.rb
 
-* Services (job queues, cache servers, search engines, etc.)
+そしてseedコマンドを実行してください。
 
-* Deployment instructions
+```
+rake db:seed
+```
 
-* ...
+railsを起動してください。
+
+```
+rails s
+```
+
+以上です。
+
+## 遊び方
+
+### 管理者
+
+管理者アカウントでログインしてください。ゲームを作成して抽選画面を開いてください。
+抽選画面で抽選ボタンを押すと、数字が１つ抽選されます。
+当選者が出ると画面に表示されます。
+
+### 参加者
+
+はじめての場合はアカウント登録してください。登録済みの場合はログインしてください。
+ゲーム一覧画面からゲームに参加して、ゲーム画面を開いてください。ビンゴカードが作成されて表示されます。
+管理者が数字を抽選すると、自動的に画面が更新されるので、特に操作は必要ありません。
+ビンゴするとビンゴしたことが表示されます。
