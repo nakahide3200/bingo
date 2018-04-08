@@ -10,11 +10,13 @@
   <%= submit_tag '抽選する', class: 'btn btn-lg btn-primary center-block', style: 'width: 200px;' %>
 <% end %>
 <br>
-<p>
+<div>
   <div class="text-center">抽選番号の履歴</div>
   <div class="lot-numbers"><%= @game.numbers.join(', ') %></div>
-</p>
-
+</div>
+<br>
+<div class="text-center">参加者数 : <%= @entry_count %></div>
+<br>
 <div class="bingo-users-table-contanier">
   <%= render partial: 'bingo_users_table', locals: {bingo_users_for_each_turn: @bingo_users_for_each_turn} %>
 </div>

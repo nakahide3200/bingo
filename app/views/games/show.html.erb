@@ -46,7 +46,7 @@
 
 <p>
   <div class="text-center">抽選番号の履歴</div>
-  <div><%= @game.numbers.join(', ') %></div>
+  <div class="lot-numbers"><%= @game.numbers.join(', ') %></div>
 </p>
 
 <%= link_to 'ゲーム一覧へ', games_path, class: 'btn btn-link center-block' %>

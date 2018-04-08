@@ -10,6 +10,7 @@ class Admin::GamesController < ApplicationController
 
   # 抽選画面
   def show
+    @entry_count = @game.entries.count
     @bingo_users_for_each_turn = @game.bingo_users_for_each_turn
   end
 
