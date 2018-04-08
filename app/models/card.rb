@@ -3,9 +3,6 @@ class Card < ApplicationRecord
 
   serialize :numbers, JSON
 
-  FREE_SPOT_NUMBER = 0
-  FREE_SPOT_NUMBER.freeze
-
   # 数値の5x5の２次元配列
   # 1列目は1から15の中から5個
   # 2列目は16から30
@@ -17,11 +14,15 @@ class Card < ApplicationRecord
     (1..75)
       .each_slice(15)
       .map { |sequence| sequence.sample(5) }
-      .tap { |table| table[2][2] = 0 }
+      .tap { |table| table[2][2] = self.free_spot_number }
       .transpose
   end
 
-  # TODO: 高速化
+  def self.free_spot_number
+    0
+  end
+
+  # TODO: 最適化
   def bingo?(lot_numbers)
     bingo_row?(lot_numbers) || bingo_column?(lot_numbers) || bingo_left_top?(lot_numbers) || bingo_right_top?(lot_numbers)
   end
@@ -29,7 +30,6 @@ class Card < ApplicationRecord
   private
 
   def bingo_row?(lot_numbers)
-    # 各行のチェック
     (0..4).each do |row|
       success = true
       (0..4).each do |col|
@@ -40,12 +40,10 @@ class Card < ApplicationRecord
       end
       return true if success
     end
-
     false
   end
 
   def bingo_column?(lot_numbers)
-    # 各行のチェック
     (0..4).each do |col|
       success = true
       (0..4).each do |row|
@@ -56,33 +54,26 @@ class Card < ApplicationRecord
       end
       return true if success
     end
-
     false
   end
 
+  # 左上右下斜線
   def bingo_left_top?(lot_numbers)
-    success = true
     (0..4).each do |n|
-      unless hit_number?(n, n, lot_numbers)
-        success = false
-        break
-      end
+      return false unless hit_number?(n, n, lot_numbers)
     end
-    success
+    true
   end
 
+  # 右上左下斜線
   def bingo_right_top?(lot_numbers)
-    success = true
     (0..4).each do |n|
-      unless hit_number?(n, 4 - n, lot_numbers)
-        success = false
-        break
-      end
+      return false unless hit_number?(n, 4 - n, lot_numbers)
     end
-    success
+    true
   end
 
   def hit_number?(row, col, lot_numbers)
-    lot_numbers.include?(numbers[row][col]) || numbers[row][col] == FREE_SPOT_NUMBER
+    lot_numbers.include?(numbers[row][col]) || numbers[row][col] == Card.free_spot_number
   end
 end

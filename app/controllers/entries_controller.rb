@@ -23,7 +23,8 @@ class EntriesController < ApplicationController
     end
     flash[:notice] = 'ゲームに参加しました。'
     redirect_to game_url(params[:game_id])
-  rescue StandardError
+  rescue StandardError => error
+    logger.error(error)
     redirect_to games_url, notice: 'ゲームに参加できませんでした。'
   end
 
