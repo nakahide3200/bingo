@@ -16,7 +16,7 @@
   </div>
 <% end %>
 
-<table class="card-table table-bordered center-block">
+<table class="card-table center-block">
   <thead>
     <tr>
       <th>B</th>
@@ -31,7 +31,13 @@
     <% @numbers.each do |row| %>
       <tr>
         <% row.each do |number| %>
-          <td data-number="<%= number %>"><%= number %></td>
+          <td data-number="<%= number %>">
+            <% if number == 0 %>
+              <%= image_tag 'free.png' %>
+            <% else %>
+              <%= number %>
+            <% end %>
+          </td>
         <% end %>
       </tr>
     <% end %>

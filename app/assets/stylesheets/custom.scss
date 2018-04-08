@@ -1,3 +1,5 @@
+$cardTableBorderColor: #daa520;
+
 html,body {
   height: 100%;
 }
@@ -39,20 +41,30 @@ html,body {
 }
 
 .card-table {
+  border: 2px $cardTableBorderColor solid;
   margin-top: 20px;
   text-align: center;
   width: 300px;
-  font-size: 24px;
   font-weight: bold;
   th {
     width: 60px;
-    padding-left: 20px
+    font-size: 40px;
+    font-weight: 900;
+    color: white;
+    text-align: center;
+    border: 4px $cardTableBorderColor solid;
+    background: $cardTableBorderColor;
   }
   tr {
     height: 60px;
     td {
+      font-size: 30px;
+      border: 4px $cardTableBorderColor solid;
       &.hit {
         color: red;
+      }
+      img {
+        width: 50px;
       }
     }
   }
