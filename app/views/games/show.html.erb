@@ -45,11 +45,12 @@
 </table>
 
 <p>
-  <div class="text-center">抽選番号</div>
+  <div class="text-center">抽選番号の履歴</div>
   <div><%= @game.numbers.join(', ') %></div>
 </p>
 
 <%= link_to 'ゲーム一覧へ', games_path, class: 'btn btn-link center-block' %>
+<br>
 
 <input id="lot_numbers_json" type="hidden" value=<%= @lot_numbers_json %> />
 <script type="text/javascript">
