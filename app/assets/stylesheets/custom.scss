@@ -40,13 +40,18 @@ html,body {
 }
 
 .bingo-img {
-  width: 300px;
-  margin: auto;
+  width: 200px;
+}
+
+.bingo-message {
+  padding-top: 4px;
+  color: red;
+  font-weight: bold;
 }
 
 .card-table {
   border: 2px $cardTableBorderColor solid;
-  margin-top: 20px;
+  margin-top: 10px;
   text-align: center;
   width: 300px;
   font-weight: bold;

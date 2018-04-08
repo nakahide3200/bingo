@@ -7,9 +7,8 @@
 </div>
 <br>
 <% if @bingo %>
-  <div class="bingo-img">
-    <%= image_tag 'bingo.png' %>
-  </div>
+  <%= image_tag 'bingo.png', class: 'bingo-img center-block' %>
+  <div class="bingo-message text-center">当選おめでとうございます！</div>
 <% else %>
   <div class="last-number">
     <%= @game.numbers.last %>
