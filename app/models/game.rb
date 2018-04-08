@@ -13,6 +13,11 @@ class Game < ApplicationRecord
     'XXX ビンゴ大会'
   end
 
+  def self.defalut_start_time
+    t = Time.zone.now.advance(hours: 1)
+    t - t.min * 60 - t.sec
+  end
+
   # まだ出ていない番号を引く
   def lot_number
     ((1..75).to_a - numbers).sample

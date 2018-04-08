@@ -32,6 +32,7 @@ class Admin::GamesController < ApplicationController
   def new
     @game = Game.new
     @game.name = Game.default_name
+    @game.start_time = Game.defalut_start_time
   end
 
   def edit; end
