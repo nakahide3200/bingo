@@ -31,6 +31,7 @@ class Admin::GamesController < ApplicationController
 
   def new
     @game = Game.new
+    @game.name = Game.default_name
   end
 
   def edit; end
