@@ -9,7 +9,7 @@
         <%= f.label :email, class: 'control-label' %>
       </div>
       <div class="col-sm-8">
-        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control' %>
+        <%= f.email_field :email, autofocus: true, autocomplete: "email", class: 'form-control', required: "required" %>
       </div>
     </div>
 
@@ -18,7 +18,7 @@
         <%= f.label :password, class: 'control-label' %>
       </div>
       <div class="col-sm-8">
-        <%= f.password_field :password, autocomplete: "off", class: 'form-control login-password' %>
+        <%= f.password_field :password, autocomplete: "off", class: 'form-control login-password', required: "required" %>
         <% if @minimum_password_length %>
           <em>(<%= @minimum_password_length %> 文字以上を入力してください。)</em>
         <% end %>
@@ -30,7 +30,7 @@
         <%= f.label :password_confirmation %>
       </div>
       <div class="col-sm-8">
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control login-password' %>
+        <%= f.password_field :password_confirmation, autocomplete: "off", class: 'form-control login-password', required: "required" %>
       </div>
     </div>
 
