@@ -2,7 +2,7 @@
 
 <h1>ゲーム一覧</h1>
 
-<table class="table table-bordered">
+<table class="table table-bordered games-table">
   <thead>
     <tr>
       <th>名前</th>
@@ -15,8 +15,8 @@
     <% @games.each do |game| %>
       <tr>
         <td><%= game.name %></td>
-        <td width="250px"><%= l(game.start_time, format: :middle) %></td>
-        <td width="150px"><%= link_to '参加する', new_game_entry_path(game), {:class => 'btn btn-primary'} %></td>
+        <td width="220px"><%= l(game.start_time, format: :middle) %></td>
+        <td width="100px"><%= link_to '参加する', new_game_entry_path(game), {:class => 'btn btn-default'} %></td>
       </tr>
     <% end %>
   </tbody>

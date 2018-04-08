@@ -2,23 +2,23 @@
 
 <h1 class="game-title"><%= @game.name %></h1>
 
-<div class="game-start-time">
-  開始時刻: <%= l(@game.start_time, format: :middle) %>
+<div class="game-start-time text-center">
+  <%= l(@game.start_time, format: :middle) %> 開始
 </div>
-
+<br>
 <%= form_tag(create_number_admin_game_path(@game), method: 'post') do %>
-  <%= submit_tag '抽選する', class: 'btn btn-lg btn-primary btn-block btn-lot' %>
+  <%= submit_tag '抽選する', class: 'btn btn-lg btn-primary center-block', style: 'width: 200px;' %>
 <% end %>
-
+<br>
 <p>
-  <div>抽選番号</div>
+  <div class="text-center">抽選番号</div>
   <div><%= @game.numbers.join(', ') %></div>
 </p>
 
 <table class="table table-bordered">
   <thead>
     <tr>
-      <th>ターン</th>
+      <th width="100px">ターン</th>
       <th>当選者</th>
     </tr>
   </thead>
@@ -33,7 +33,7 @@
   </tbody>
 </table>
 
-<%= link_to 'ゲーム一覧へ', admin_games_path %>
+<%= link_to 'ゲーム一覧へ', admin_games_path, class: 'btn btn-link center-block' %>
 
 <script type="text/javascript">
   $(function(){

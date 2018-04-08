@@ -1,11 +1,16 @@
-html,body{
+html,body {
   height: 100%;
 }
 
-.container{
+.container {
   width: 100%;
   max-width: 100%;
   height: 100%;
+
+  .header {
+    padding-top: 10px;
+    padding-bottom: 10px;
+  }
 
   .row {
     margin-left: 0;
@@ -18,10 +23,6 @@ html,body{
   h1 {
     text-align: center;
   }
-}
-
-.logout-link {
-  float: right;
 }
 
 .last-number {
@@ -67,7 +68,7 @@ html,body{
   }
 
   .form-login {
-    width: 420px;
+    max-width: 420px;
     margin: 5px auto 25px auto;
     border-radius: 5px;
     border: 1px solid #ddd;
@@ -95,3 +96,14 @@ html,body{
   }
 }
 
+.games-table {
+  max-width: 600px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.games-admin-table {
+  max-width: 620px;
+  margin-left: auto;
+  margin-right: auto;
+}

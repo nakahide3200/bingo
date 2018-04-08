@@ -1,6 +1,7 @@
 <!DOCTYPE html>
 <html>
   <head>
+    <meta name="viewport" content="width=device-width,user-scalable=0">
     <title>Bingo</title>
     <%= csrf_meta_tags %>
 
@@ -10,10 +11,10 @@
 
   <body>
     <div class="container">
-      <div>
+      <div class="header">
         <% if user_signed_in? %>
-          <div><%= current_user.email %> さん</div>
-          <%= link_to "ログアウト", destroy_user_session_path, class: "logout-link" %>
+          <%= current_user.email %> さん
+          <%= link_to "ログアウト", destroy_user_session_path, class: "pull-right", data: { confirm: 'ログアウトしますか?' } %>
         <% else %>
           <%= link_to "ログイン", new_user_session_path %>
         <% end %>

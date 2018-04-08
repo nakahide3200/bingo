@@ -1,7 +1,7 @@
 <h1><%= @game.name =%></h1>
 
-<div><%= @game.name =%>に参加しますか？</div>
-
+<div class="text-center"><%= @game.name =%>に参加しますか？</div>
+<br>
 <%= form_for(@game.entries.build, url: game_entries_path(@game)) do |form| %>
   <% if @entry && @entry.errors.any? %>
     <div id="error_explanation">
@@ -16,8 +16,8 @@
   <% end %>
 
   <div class="actions">
-    <%= form.submit '参加する' %>
+    <%= form.submit '参加する', {class: 'btn btn-default center-block'} %>
   </div>
 <% end %>
-
-<%= link_to 'キャンセル', games_path %>
+<br>
+<%= link_to 'キャンセル', games_path, class: 'btn btn-link center-block' %>
